@@ -37,5 +37,30 @@ public class JobServiceImpl implements JobService{
         }
 		return null;
 	}
+
+	@Override
+	public boolean deleteJob(Long id) {
+		// TODO Auto-generated method stub
+		boolean jobExists = jobs.removeIf(job -> job.getId().equals(id));
+	    return jobExists;
+		
+	}
+
+	@Override
+	public boolean updateJob(Job job, Long id) {
+		// TODO Auto-generated method stub
+		for (Job temp : jobs) {
+            if (temp.getId().equals(id)) {
+                temp.setDescription(job.getDescription());
+                temp.setLocation(job.getLocation());
+                temp.setMaxSalary(job.getMaxSalary());
+                temp.setMinSalary(job.getMinSalary());
+                temp.setTitle(job.getTitle());
+                return true;
+            }
+        }
+		return false;
+		
+	}
 	
 }
