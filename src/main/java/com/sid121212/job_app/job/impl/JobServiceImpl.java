@@ -12,7 +12,8 @@ import com.sid121212.job_app.job.JobService;
 public class JobServiceImpl implements JobService{
 	
 	private List<Job> jobs = new ArrayList<Job>();
-
+	private Long id = (long) 0;
+	
 	@Override
 	public List<Job> findAll() {
 		// TODO Auto-generated method stub
@@ -22,8 +23,19 @@ public class JobServiceImpl implements JobService{
 	@Override
 	public void createJob(Job job) {
 		// TODO Auto-generated method stub
+		job.setId(++id);
 		jobs.add(job);
 		
+	}
+
+	@Override
+	public Job findJobById(Long jobId) {
+		for (Job job : jobs) {
+            if (job.getId().equals(jobId)) {
+                return job;
+            }
+        }
+		return null;
 	}
 	
 }
