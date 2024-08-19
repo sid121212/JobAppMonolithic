@@ -66,7 +66,7 @@ public class JobController {
 		boolean updated = jobService.updateJob(job,id);
 		if (updated) return new ResponseEntity<> ("Job with id: "+id+" has been successfully updated",HttpStatus.OK);
 		return new ResponseEntity<> (HttpStatus.NOT_FOUND);
-	}
+	}		
 	
 	
 }
