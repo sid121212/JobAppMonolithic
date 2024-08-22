@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.sid121212.job_app.job.Job;
+import com.sid121212.job_app.review.Review;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -24,6 +25,19 @@ public class Company {
 	@OneToMany(mappedBy = "company")
 	private List<Job> jobs;
 	
+
+	@OneToMany(mappedBy = "company")
+	private List<Review> review;
+	
+	
+	public List<Review> getReview() {
+		return review;
+	}
+
+	public void setReview(List<Review> review) {
+		this.review = review;
+	}
+
 	public Company() {
 		
 	}

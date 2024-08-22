@@ -47,14 +47,14 @@ public class CompanyController {
 	
 	
 	@PostMapping
-	public ResponseEntity<String> createJob(@RequestBody Company company) {
+	public ResponseEntity<String> createCompany(@RequestBody Company company) {
 		companyService.addCompany(company);
 		return new ResponseEntity<> ("Company with id: "+company.getId()+" has been succesfully created",HttpStatus.CREATED);
 	}	
 	
 	
 	@DeleteMapping("/{id}")
-	public ResponseEntity<String> deleteJob(@PathVariable Long id){
+	public ResponseEntity<String> deleteCompany(@PathVariable Long id){
 		boolean deleted = companyService.deleteCompany(id);
 		if (deleted)
 			return new ResponseEntity<> ("Company with id: "+id+" has been successfully deleted",HttpStatus.OK);
@@ -62,7 +62,7 @@ public class CompanyController {
 	}
 	
 	@PutMapping("/{id}")
-	public ResponseEntity<String> updateJob(@RequestBody Company company,@PathVariable Long id){
+	public ResponseEntity<String> updateCompany(@RequestBody Company company,@PathVariable Long id){
 		boolean updated = companyService.updateCompany(company,id);
 		if (updated) return new ResponseEntity<> ("Company with id: "+id+" has been successfully updated",HttpStatus.OK);
 		return new ResponseEntity<> (HttpStatus.NOT_FOUND);
